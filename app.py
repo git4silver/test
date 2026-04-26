@@ -1,19 +1,18 @@
 from flask import Flask, jsonify
+from config import Config
+from logging_setup import setup_logging
 
 app = Flask(__name__)
+app.config.from_object(Config)
+setup_logging(app.config['LOG_LEVEL'])
 
-@app.get("/")
+@app.route('/')
 def index():
-    return jsonify({
-        "app": "minimal-flask-demo",
-        "status": "ok",
-        "message": "Minimal Flask app is running"
-    })
+    return jsonify(app='minimal-flask-demo', status='ok', message='Minimal Flask app is running')
 
-@app.get("/health")
+@app.route('/health')
 def health():
-    return jsonify({"status": "healthy"}), 200
+    return jsonify(status='healthy')
 
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=False)
+if __name__ == '__main__':
+    app.run(host=app.config['HOST'], port=app.config['PORT'])
