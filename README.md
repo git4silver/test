@@ -1,36 +1,11 @@
-# Minimal Flask Demo
+## Configuration Management
 
-Prosty projekt testowy do sprawdzenia reverse discovery.
+This application uses environment variables for configuration management. The following variables can be set:
+- `DEBUG`: Set to 'True' to enable debug mode.
+- `HOST`: The host address for the application.
+- `PORT`: The port number for the application.
+- `LOG_LEVEL`: The logging level (e.g., INFO, DEBUG).
 
-## Pliki
-- `app.py` — minimalna aplikacja Flask
-- `requirements.txt` — zależności
-- `Dockerfile` — obraz Dockera
+## Logging
 
-## Endpointy
-- `GET /` — podstawowa odpowiedź JSON
-- `GET /health` — health check
-
-## Uruchomienie lokalnie
-```bash
-pip install -r requirements.txt
-python app.py
-```
-
-Aplikacja będzie dostępna pod:
-- `http://localhost:5000/`
-- `http://localhost:5000/health`
-
-## Uruchomienie w Dockerze
-```bash
-docker build -t minimal-flask-demo .
-docker run -p 5000:5000 minimal-flask-demo
-```
-
-## Po co ten projekt
-To jest mały, sensowny projekt wejściowy do testów:
-- odczytu struktury plików
-- wykrywania Flask + Docker
-- generowania reconstructed brief
-- generowania architecture reconstruction
-- generowania gap analysis
+Logging is configured to output to stdout with a specified log level.
